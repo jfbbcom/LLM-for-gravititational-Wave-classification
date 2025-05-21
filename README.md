@@ -16,7 +16,7 @@ train.ipynb是生成数据以及处理数据的主要文件，包含了对数据
 
 ### llamafactory文件夹的使用
 LLaMa-Factory的具体教程可以参考：https://zhuanlan.zhihu.com/p/695287607?utm_source=wechat_session&utm_medium=social&s_r=0。
-对于原版的LLaMa-Factory文件夹，本实验新增、修改了：data（存储处理后的sharegpt数据）、models（存储下载的大模型参数）、merge_models（存储原参数与lora合并后的模型）、saves（存储运行后的结果）这几个文件夹。由于该文件真用内训较大（404G），只保留了处理后的模拟数据与真实数据集，具体的文件夹参考图片llamafactory.png。
+对于原版的LLaMa-Factory文件夹，本实验新增、修改了：data（存储处理后的sharegpt数据）、models（存储下载的大模型参数）、merge_models（存储原参数与lora合并后的模型）、saves（存储运行后的结果）这几个文件夹。由于该文件夹内存较大（404G），只保留了处理后的模拟数据与真实数据集，具体的文件夹参考图片llamafactory.png。
 注意一点，本文使用的准确率函数修改过，不是原LLaMa-Factory使用的ComputeAccuracy函数。该函数具体位置为：/Code/LLaMA-Factory/src/llamafactory/train/sft/metric.py,同时上一级文件/home1/lyx/CODE/LLaMA-Factory/src/llamafactory/train/sft/workflow.py也经过了修改。这两个文件单独放在了llama-factory文件夹下。
 
 
