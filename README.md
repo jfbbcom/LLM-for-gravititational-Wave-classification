@@ -1,22 +1,50 @@
-# LLM-for-gravititational-Wave-classification
-A large model is used to handle the classification task of gravitational wave data. The data is sourced from kaagle's gravitational wave classification competition. Link: https://www.kaggle.com/competitions/g2net-gravitational-wave-detection/data. The large model was used for this task for the first time.
+# LLM for Gravitational Wave Classification
 
-# 工作区域
-## 数据 
-模拟数据源为https://www.kaggle.com/competitions/g2net-gravitational-wave-detection/data， 也可以直接下载GW文件夹下的数据。真实数据来源于python中PyCBC库，具体提取过程见train.py中真实数据构建kmeans部分。
+This project explores the use of large language models (LLMs) for classifying gravitational wave signals. The data is sourced from Kaggle's gravitational wave detection competition. Dataset link: [Kaggle G2Net Competition](https://www.kaggle.com/competitions/g2net-gravitational-wave-detection/data). To our knowledge, this is the first attempt to apply LLMs to this task.
 
-## 数据处理
-train.ipynb是生成数据以及处理数据的主要文件，包含了对数据的预处理，到生成输入jsonl的操作。
+---
 
-## 模型下载
-关于模型的下载，国内下载各大模型可以去魔塔官网：https://www.modelscope.cn/home。
+## Project Structure
 
-## 训练
-训练、合并模型、测试则分别是由llama3_lora_sft.yaml、llama3_merge_config.yaml、llama3_lora_test.yaml三个文件控制（终端首先要进入LLaMA-Factory文件中）。
+### 📁 Data
 
-### llamafactory文件夹的使用
-LLaMa-Factory的具体教程可以参考：https://zhuanlan.zhihu.com/p/695287607?utm_source=wechat_session&utm_medium=social&s_r=0。
-对于原版的LLaMa-Factory文件夹，本实验新增、修改了：data（存储处理后的sharegpt数据）、models（存储下载的大模型参数）、merge_models（存储原参数与lora合并后的模型）、saves（存储运行后的结果）这几个文件夹。由于该文件夹内存较大（404G），只保留了处理后的模拟数据与真实数据集，具体的文件夹参考图片llamafactory.png。
-注意一点，本文使用的准确率函数修改过，不是原LLaMa-Factory使用的ComputeAccuracy函数。该函数具体位置为：/Code/LLaMA-Factory/src/llamafactory/train/sft/metric.py,同时上一级文件/home1/lyx/CODE/LLaMA-Factory/src/llamafactory/train/sft/workflow.py也经过了修改。这两个文件单独放在了llama-factory文件夹下。
+- **Simulated data** comes from the [Kaggle G2Net competition dataset](https://www.kaggle.com/competitions/g2net-gravitational-wave-detection/data). Alternatively, the `GW/` directory also contains prepared data.
+- **Real-world data** is extracted using the PyCBC Python library. See the `train.py` file, specifically the KMeans-based real data processing section.
 
+### ⚙️ Data Processing
+
+The notebook `train.ipynb` handles data preprocessing and generation. It covers the full pipeline from raw strain signals to the creation of JSONL input format for LLM training.
+
+### ⬇️ Model Download
+
+Pre-trained models can be downloaded via [ModelScope](https://www.modelscope.cn/home), especially for users based in China.
+
+### 🧠 Training & Evaluation
+
+Training, merging, and evaluation are configured via the following files:
+
+- `llama3_lora_sft.yaml`: Training configuration
+- `llama3_merge_config.yaml`: Model merging (LoRA + base model)
+- `llama3_lora_test.yaml`: Evaluation/testing
+
+Before running, make sure to `cd` into the `LLaMA-Factory` directory.
+
+---
+
+## 🔧 LLaMA-Factory Modifications
+
+We use a customized version of the [LLaMA-Factory](https://zhuanlan.zhihu.com/p/695287607?utm_source=wechat_session&utm_medium=social&s_r=0). Several directories have been added or modified:
+
+- `data/`: Stores processed ShareGPT-format training data
+- `models/`: Contains downloaded LLM parameters
+- `merge_models/`: Stores LoRA-merged model checkpoints
+- `saves/`: Stores training logs and outputs
+
+⚠️ Note: The full `LLaMA-Factory` folder exceeds 400 GB, so only the processed datasets (simulated + real) are preserved here. For a visual overview of folder structure, see `llamafactory.png`.
+
+---
+
+## 🧪 Evaluation Metric Update
+
+We modified the default accuracy function in `LLaMA-Factory`. The new `ComputeAccuracy` implementation is located at:
 
