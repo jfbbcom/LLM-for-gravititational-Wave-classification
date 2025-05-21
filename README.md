@@ -48,6 +48,7 @@ We use a customized version of the [LLaMA-Factory](https://zhuanlan.zhihu.com/p/
 
 We modified the default accuracy function in `LLaMA-Factory`. The new `ComputeAccuracy` implementation is located at:
 /home1/lyx/CODE/LLaMA-Factory/src/llamafactory/train/sft/metric.py
+
 The corresponding logic in:
 /home1/lyx/CODE/LLaMA-Factory/src/llamafactory/train/sft/workflow.py
 
