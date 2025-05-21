@@ -3,7 +3,7 @@ A large model is used to handle the classification task of gravitational wave da
 
 # 工作区域
 ## 数据 
-模拟数据源为https://www.kaggle.com/competitions/g2net-gravitational-wave-detection/data，也可以直接下载GW文件夹下的数据。真实数据来源于python中PyCBC库，具体提取过程见train.py中真实数据构建kmeans部分。
+模拟数据源为https://www.kaggle.com/competitions/g2net-gravitational-wave-detection/data， 也可以直接下载GW文件夹下的数据。真实数据来源于python中PyCBC库，具体提取过程见train.py中真实数据构建kmeans部分。
 
 ## 数据处理
 train.ipynb是生成数据以及处理数据的主要文件，包含了对数据的预处理，到生成输入jsonl的操作。
