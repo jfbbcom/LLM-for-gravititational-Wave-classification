@@ -9,7 +9,7 @@ This project explores the use of large language models (LLMs) for classifying gr
 ### 📁 Data
 
 - **Simulated data** comes from the [Kaggle G2Net competition dataset](https://www.kaggle.com/competitions/g2net-gravitational-wave-detection/data). Alternatively, the `GW/` directory also contains prepared data.
-- **Real-world data** is extracted using the PyCBC Python library. See the `train.py` file, specifically the KMeans-based real data processing section.
+- **Real-world data** is extracted using the PyCBC Python library. See the `train.ipynb` file, specifically the KMeans-based real data processing section.
 
 ### ⚙️ Data Processing
 
